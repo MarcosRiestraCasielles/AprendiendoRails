@@ -1,0 +1,51 @@
+<center>
+<%= link_to 'INICIO', bienvenido_index_path %>
+<!--<%= link_to 'INICIO con controlador', controller: 'bienvenido'  %>
+ Se puede hacer de las dos maneras !-->
+<%= link_to 'Nuevo Usuario', new_usuario_path %>
+<%= link_to 'Listado de Usuarios', usuarios_path %>
+
+  <%= form_for @usuario do |f| %>
+  <!-- identificador de objeto para ese formulario !-->
+  <!-- la f sirve para crear dos etiquetas y dos campos de texto, uno para el título y otro
+  para el texto del artículo !-->
+
+<!-- Para la detección de errores !-->
+  <% if @usuario.errors.any? %>
+  <div id="error_explanation">
+    <h1>
+      <!--pluralize es un método de apoyo que toma un número y una cadena de texto
+      y retorna una cadena de texto como argumentos, si el numero que retorna es
+      mayor que uno, la cadena será convertida auetomaticamente a plural!-->
+      <%= pluralize(@usuario.errors.count, "error") %> han impedido que el usuario sea grabado:
+    </h1>
+    <ul>
+      <% @usuario.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+  <p>
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </p>
+
+  <p>
+    <%= f.label :apellido %><br>
+    <%= f.text_field :apellido %>
+  </p>
+  <p>
+    <%= f.label :informacion %><br>
+    <%= f.text_area :informacion %>
+  </p>
+
+  <p>
+    <%= f.submit 'Guardar Usuario' %>
+  </p>
+<% end %>
+
+<%= link_to 'Volver', usuarios_path %>
+</center>

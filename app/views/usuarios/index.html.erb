@@ -1,0 +1,27 @@
+<center>
+<%= link_to 'INICIO', bienvenido_index_path %>
+<%= link_to 'Nuevo Usuario', new_usuario_path %>
+<%= link_to 'Listado de Usuarios', usuarios_path %>
+<h1>Listando de usuarios</h1>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Información adiccional</th>
+  </tr>
+
+  <% @usuarios.each do |usuario| %>
+    <tr>
+      <td><%= usuario.nombre %></td>
+      <td><%= usuario.apellido %></td>
+      <td><%= usuario.informacion %></td>
+      <td><%= link_to 'Ver', usuario_path(usuario) %></td>
+      <td><%= link_to 'Editar', edit_usuario_path(usuario) %></td>
+      <td><%= link_to 'Borrar', usuario_path(usuario) ,method: :delete, data: { confirm: '¿Estás seguro?'} %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Volver', bienvenido_index_path %>
+</center>

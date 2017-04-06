@@ -1,0 +1,33 @@
+<center>
+  <%= link_to 'INICIO', bienvenido_index_path %>
+  <!--<%= link_to 'INICIO con controlador', controller: 'bienvenido'  %>
+   Se puede hacer de las dos maneras !-->
+  <%= link_to 'Nuevo Usuario', new_usuario_path %>
+  <%= link_to 'Listado de Usuarios', usuarios_path %>
+<p>
+  <strong>Nombre:</strong>
+  <%= @usuario.nombre %>
+</p>
+
+<p>
+  <strong>apellido:</strong>
+  <%= @usuario.apellido %>
+</p>
+<p>
+  <strong>informacion:</strong>
+  <%= @usuario.informacion %>
+</p>
+
+<%= form_for([@usuario, @usuario.opinion.build]) do |f| %>
+  <p>
+    <%= f.label :opinion %><br>
+    <%= f.text_area :opinion %>
+  </p>
+  <p>
+    <%= f.submit 'Guardar opinion' %>
+  </p>
+<% end %>
+
+<%= link_to 'Volver', usuarios_path %> |
+<%= link_to 'Editar', edit_usuario_path(@usuario) %>
+</center>
